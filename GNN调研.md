@@ -37,7 +37,7 @@ GNN的起源：CNN和图嵌入（graph embedding）
 
 CNN的核心特点：局部连接、权重共享、多层叠加。（这些在图中也可以使用，因为图是最经典的局部连接结构，但图属于非欧几里得数据，CNN的卷积和池化操作很难迁移到图中，因此诞生了GNN）
 
-![image-20200709232609888](C:\Users\Mrfan\AppData\Roaming\Typora\typora-user-images\image-20200709232609888.png)
+![image-20200709232609888](picture/image-20200709232609888-1594393772925.png)
 
 > The other motivation comes from graph embedding [11]– [15], which learns to represent graph nodes, edges or subgraphs in low-dimensional vectors.
 
@@ -79,7 +79,7 @@ GNN采用在每个节点上分别传播（propagate）的方式进行学习，�
 
 https://pytorch.org/get-started/locally/ 在网站中选择配置参数，获取安装命令
 
-![image-20200710223712332](C:\Users\Mrfan\AppData\Roaming\Typora\typora-user-images\image-20200710223712332.png)
+![image-20200710223712332](picture/image-20200710223712332-1594393778389.png)
 
 ```shell
 conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
