@@ -328,3 +328,6 @@ Epoch: 200, Train: 0.9929, Val: 0.8000, Test: 0.8210
 (gnn) F:\OneDrive\研一\GNN\pytorch_geometric-master\examples>
 ```
 
+### PyG输入数据处理
+
+PyG官方文档：https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html
