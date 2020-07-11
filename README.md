@@ -331,3 +331,79 @@ Epoch: 200, Train: 0.9929, Val: 0.8000, Test: 0.8210
 ### PyG输入数据处理
 
 PyG官方文档：https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html
+
+在PyG中，图（graph）被用来构建节点（nodes）之间的关系（relations）。每个graph都被定义为`torch_geometric.data.Data`，默认具有以下属性**（非必须）**：
+
+- `data.x`：节点特征矩阵，shape为`[num_nodes, num_node_features]`
+
+- `data.edge_index`：COO格式的图连接（Graph connectivity）数据，shape为`[2, num_edges]`，type为`torch.long`
+
+- `data.edge_attr`：边特征矩阵，shape为`[num_edges, num_edges_features]`
+
+- `data.y`：训练目标（Target to train against），shape不固定。例如：对于node-level的任务，shape为`[num_nodes, *]`，对于graph-level的任务，shape为`[1, *]`。
+
+  > Applications to a graphical domain can generally be divided into two broad classes, called **graph-focused** and **node-focused**. ——《The Graph Neural Network Model》
+
+- `data.pos`：节点的位置矩阵（position matrix），shape为`[num_nodes, num_dimensions]`
+
+实例：
+
+![image-20200711201832839](picture/image-20200711201832839.png)
+
+如图为一个不带权重的无向图，有三个顶点0、1、2，以及两条无向边，每个顶点的特征维度为1即$X_1$
+
+```python
+import torch
+from torch_geometric.data import Data
+edge_index = torch.tensor([0, 1, 1, 2],
+                          [1, 0, 2, 1], dtype=torch.long)
+x = torch.tensor([-1, 0, 1], dtype=torch.float)
+data = Data(x = x, edge_index = edge_index)
+```
+
+### Cora数据集介绍
+
+Cora数据集（引文网络）是由众多机器学习领域的论文组成，是近年来图深度学习领域最常用的数据集之一，这些论文总共被分为7个类别：
+
+- 基于案例Case based
+- 生成算法Genetic Algorithms
+- 神经网络Neural Networks
+- 概率方法Probabilistic Methods
+- 强化学习Reinforcement Leraning
+- 规则学习Rule Learning
+- 理论Theory
+
+在该数据集中，每一篇论文至少引用了该数据集中的其他论文或者被其他论文所引用，总共有2708篇papers。每篇论文有1433个`word_attributes`，即每个节点的特征维度是1433.
+
+数据集文件夹共包含两个文件：
+
+1. `.content`：包含对每一个paper的描述，格式为：
+
+   `<paper_id> + <word_attributes> + <class_label>`
+
+   - `paper_id`：paper的唯一标识符
+   - `word_attributes`：词汇特征，取值为0或1，表示对应词汇是否存在
+   - `class_label`：论文的类别
+
+   数据样例：
+
+   ```shell
+   31336	0	0	0	0	0	0	0	0  ...	0	0	0	0	0	0	Neural_Networks
+   1061127	0	0	0	0	0	0	0	0  ...	0	0	0	1	0	0	Rule_Learning
+   ```
+
+2. `.cite`：包含数据集的引用图（citation graph），格式为：
+
+   `<ID of cited paper> + <ID of citing paper>`
+
+   例如有一行为`paper1 paper2`，表示`paper2`引用了`paper1`。
+
+   数据样例：
+
+   ```shell
+   35	1033
+   35	103482
+   35	103515
+   35	1050679
+   ```
+
