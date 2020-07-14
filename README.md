@@ -449,13 +449,38 @@ cites = np.array([[paper_dict[cite_id[0]], paper_dict[cite_id[1]]] for cite_id i
 cites = np.concatenate((cites, cites[::-1, :]), axis=1)
 # cites.shape = (2, 5429*2)
 
-# 计算节点的度
-_, degree_list = np.unique(cites[0, :], return_counts=True)
+# y构建
+y = np.array([label_dict[i] for i in label_list])
 
 # Input
 node_num = len(paper_list)         # 节点个数
 feat_dim = feature_list.shape[1]   # 特征维度
-stat_dim = 32                      # 状态维度
 num_class = len(labels)            # 节点种类数
+
+# 转换为输入数据格式
+x = torch.from_numpy(np.array(feature_list, dtype=np.float32))
+edge_index = torch.from_numpy(cites)
+y = torch.from_numpy(y)
+data = Data(x=x, edge_index=edge_index, y=y)
+
+# 分割数据集
+data.train_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
+data.train_mask[:data.num_nodes - 1000] = 1  # 1708 train
+data.val_mask = None  # 0 valid
+data.test_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
+data.test_mask[data.num_nodes - 500:] = 1  # 500 test
+data.num_classes = len(label_dict)
+
+# 输出数据集的有关数据
+print("{}Data Info{}".format("*" * 20, "*" * 20))
+print("==> Is undirected graph : {}".format(data.is_undirected()))
+print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges / 2)))
+print("==> Number of nodes : {}".format(data.num_nodes))
+print("==> Node feature dim : {}".format(data.num_features))
+print("==> Number of training nodes : {}".format(data.train_mask.sum().item()))
+print("==> Number of testing nodes : {}".format(data.test_mask.sum().item()))
+print("==> Number of classes : {}".format(data.num_classes))
+
+
 ```
 
