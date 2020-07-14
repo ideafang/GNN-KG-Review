@@ -409,3 +409,53 @@ Cora数据集（引文网络）是由众多机器学习领域的论文组成，�
 
 ### Core数据预处理
 
+```python
+import numpy as np
+
+content_path = './cora/cora.content'
+cite_path = './cora/cora.cites'
+
+with open(content_path, "r") as f:
+    contents = f.readlines()
+with open(cite_path, "r") as f:
+    cites = f.readlines()
+
+# contents, cites are lists
+# print(np.array(contents).shape) # (2708,)
+# print(np.array(cites).shape) # (5429,)
+# print(contents[0]) # \t划分数据
+
+# contents数据切分 -> <paper> + <feature> + <label>
+contents = np.array([np.array(line.strip().split("\t")) for line in contents])
+# print(contents.shape) # (2708, 1435)
+paper_list, feature_list, label_list = np.split(contents, [1, -1], axis=1)
+paper_list, label_list = np.squeeze(paper_list), np.squeeze(label_list)
+
+# paper -> dict
+paper_dict = dict([(key, val) for val, key in enumerate(paper_list)])
+# print(paper_dict[31336]) # '31336': 0
+
+# label -> dict
+labels = list(set(label_list))
+label_dict = dict([(key, val) for val, key in enumerate(labels)])
+# print(label_dict['Rule_learning']) # 'Rule_Learning': 0
+
+# cites数据整理
+cites = [line.strip().split("\t") for line in cites]
+# 将cites中引用关系的paperID转换为paper_dict字典序，最后转置矩阵是为了满足PyG输入中edge_index的要求
+# cite_id[0]为被引用文献的paper_id, cite_id[1]为引用文献的paper_id
+cites = np.array([[paper_dict[cite_id[0]], paper_dict[cite_id[1]]] for cite_id in cites], np.int64).T
+# cites.shape = (2, 5429)
+cites = np.concatenate((cites, cites[::-1, :]), axis=1)
+# cites.shape = (2, 5429*2)
+
+# 计算节点的度
+_, degree_list = np.unique(cites[0, :], return_counts=True)
+
+# Input
+node_num = len(paper_list)         # 节点个数
+feat_dim = feature_list.shape[1]   # 特征维度
+stat_dim = 32                      # 状态维度
+num_class = len(labels)            # 节点种类数
+```
+
