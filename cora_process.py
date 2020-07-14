@@ -1,9 +1,8 @@
 import numpy as np
 import torch
-import torch.nn.functional as F
+import matplotlib.pyplot as plt
 from torch_geometric.data import Data
-from torch_geometric.nn import GCNConv, ChebConv, MessagePassing, SplineConv
-from torch_geometric.utils import add_self_loops, degree
+
 
 content_path = './cora/cora.content'
 cite_path = './cora/cora.cites'
@@ -64,6 +63,7 @@ data.test_mask = torch.zeros(data.num_nodes, dtype=torch.uint8)
 data.test_mask[data.num_nodes - 500:] = 1  #500 test
 data.num_classes = len(label_dict)
 
+# 输出数据集的有关数据
 print("{}Data Info{}".format("*"*20, "*"*20))
 print("==> Is undirected graph : {}".format(data.is_undirected()))
 print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges/2)))
@@ -72,3 +72,25 @@ print("==> Node feature dim : {}".format(data.num_node_features))
 print("==> Number of training nodes : {}".format(data.train_mask.sum().item()))
 print("==> Number of testing nodes : {}".format(data.test_mask.sum().item()))
 print("==> Number of classes : {}".format(data.num_classes))
+
+# 输出数据集各类别的条形统计图
+print(f"{'-' * 30} Label Info {'-' * 30}")
+print(("\n{}" * 7).format(*[(i, j) for j, i in label_dict.items()]))
+inds, nums = np.unique(y[data.train_mask].numpy(), return_counts=True)
+plt.figure(1)
+plt.subplot(121)
+plt.bar(x=inds, height=nums, width=0.8, bottom=0, align='center')
+plt.xticks(ticks=range(data.num_classes))
+plt.xlabel(xlabel="Label Index")
+plt.ylabel(ylabel="Sample Num")
+plt.ylim((0, 600))
+plt.title(label="Train Data Statics")
+inds, nums = np.unique(y[data.test_mask].numpy(), return_counts=True)
+plt.subplot(122)
+plt.bar(x=inds, height=nums, width=0.8, bottom=0, align='center')
+plt.xticks(ticks=range(data.num_classes))
+plt.xlabel(xlabel="Label Index")
+plt.ylabel(ylabel="Sample Num")
+plt.ylim((0, 600))
+plt.title(label="Test Data Statics")
+plt.savefig("dataset_info.png")

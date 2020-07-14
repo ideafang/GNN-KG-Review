@@ -127,199 +127,7 @@ Done!
 Epoch: 001, Train: 0.2786, Val: 0.2400, Test: 0.2490
 Epoch: 002, Train: 0.5857, Val: 0.3280, Test: 0.3390
 Epoch: 003, Train: 0.6571, Val: 0.3640, Test: 0.3680
-Epoch: 004, Train: 0.6000, Val: 0.3640, Test: 0.3680
-Epoch: 005, Train: 0.6286, Val: 0.3640, Test: 0.3680
-Epoch: 006, Train: 0.7000, Val: 0.4220, Test: 0.4400
-Epoch: 007, Train: 0.7071, Val: 0.4640, Test: 0.4660
-Epoch: 008, Train: 0.6929, Val: 0.4740, Test: 0.4580
-Epoch: 009, Train: 0.7143, Val: 0.4780, Test: 0.4620
-Epoch: 010, Train: 0.7357, Val: 0.4900, Test: 0.4880
-Epoch: 011, Train: 0.7429, Val: 0.5120, Test: 0.5160
-Epoch: 012, Train: 0.7857, Val: 0.5440, Test: 0.5690
-Epoch: 013, Train: 0.8000, Val: 0.5580, Test: 0.6080
-Epoch: 014, Train: 0.8357, Val: 0.5840, Test: 0.6350
-Epoch: 015, Train: 0.8571, Val: 0.6120, Test: 0.6520
-Epoch: 016, Train: 0.8857, Val: 0.6280, Test: 0.6680
-Epoch: 017, Train: 0.9000, Val: 0.6500, Test: 0.6810
-Epoch: 018, Train: 0.9143, Val: 0.6720, Test: 0.6880
-Epoch: 019, Train: 0.9143, Val: 0.6900, Test: 0.7000
-Epoch: 020, Train: 0.9143, Val: 0.6940, Test: 0.7040
-Epoch: 021, Train: 0.9071, Val: 0.6960, Test: 0.7090
-Epoch: 022, Train: 0.9071, Val: 0.6960, Test: 0.7090
-Epoch: 023, Train: 0.9071, Val: 0.6960, Test: 0.7090
-Epoch: 024, Train: 0.9071, Val: 0.6960, Test: 0.7090
-Epoch: 025, Train: 0.9143, Val: 0.6960, Test: 0.7090
-Epoch: 026, Train: 0.9214, Val: 0.7040, Test: 0.7100
-Epoch: 027, Train: 0.9286, Val: 0.7180, Test: 0.7250
-Epoch: 028, Train: 0.9429, Val: 0.7300, Test: 0.7330
-Epoch: 029, Train: 0.9500, Val: 0.7340, Test: 0.7510
-Epoch: 030, Train: 0.9571, Val: 0.7380, Test: 0.7570
-Epoch: 031, Train: 0.9571, Val: 0.7460, Test: 0.7680
-Epoch: 032, Train: 0.9571, Val: 0.7520, Test: 0.7740
-Epoch: 033, Train: 0.9571, Val: 0.7540, Test: 0.7760
-Epoch: 034, Train: 0.9571, Val: 0.7560, Test: 0.7720
-Epoch: 035, Train: 0.9571, Val: 0.7560, Test: 0.7720
-Epoch: 036, Train: 0.9643, Val: 0.7560, Test: 0.7720
-Epoch: 037, Train: 0.9643, Val: 0.7560, Test: 0.7720
-Epoch: 038, Train: 0.9643, Val: 0.7560, Test: 0.7720
-Epoch: 039, Train: 0.9643, Val: 0.7560, Test: 0.7720
-Epoch: 040, Train: 0.9643, Val: 0.7580, Test: 0.7650
-Epoch: 041, Train: 0.9643, Val: 0.7620, Test: 0.7710
-Epoch: 042, Train: 0.9643, Val: 0.7640, Test: 0.7730
-Epoch: 043, Train: 0.9643, Val: 0.7660, Test: 0.7810
-Epoch: 044, Train: 0.9571, Val: 0.7660, Test: 0.7810
-Epoch: 045, Train: 0.9571, Val: 0.7700, Test: 0.7950
-Epoch: 046, Train: 0.9571, Val: 0.7720, Test: 0.7990
-Epoch: 047, Train: 0.9643, Val: 0.7760, Test: 0.8000
-Epoch: 048, Train: 0.9643, Val: 0.7780, Test: 0.8010
-Epoch: 049, Train: 0.9643, Val: 0.7780, Test: 0.8010
-Epoch: 050, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 051, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 052, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 053, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 054, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 055, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 056, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 057, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 058, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 059, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 060, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 061, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 062, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 063, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 064, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 065, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 066, Train: 0.9643, Val: 0.7820, Test: 0.8030
-Epoch: 067, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 068, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 069, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 070, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 071, Train: 0.9786, Val: 0.7820, Test: 0.8030
-Epoch: 072, Train: 0.9714, Val: 0.7820, Test: 0.8030
-Epoch: 073, Train: 0.9714, Val: 0.7880, Test: 0.8120
-Epoch: 074, Train: 0.9714, Val: 0.7880, Test: 0.8120
-Epoch: 075, Train: 0.9714, Val: 0.7880, Test: 0.8120
-Epoch: 076, Train: 0.9714, Val: 0.7880, Test: 0.8120
-Epoch: 077, Train: 0.9714, Val: 0.7880, Test: 0.8120
-Epoch: 078, Train: 0.9786, Val: 0.7880, Test: 0.8120
-Epoch: 079, Train: 0.9786, Val: 0.7880, Test: 0.8120
-Epoch: 080, Train: 0.9786, Val: 0.7900, Test: 0.8160
-Epoch: 081, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 082, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 083, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 084, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 085, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 086, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 087, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 088, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 089, Train: 0.9786, Val: 0.7920, Test: 0.8190
-Epoch: 090, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 091, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 092, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 093, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 094, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 095, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 096, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 097, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 098, Train: 0.9857, Val: 0.7920, Test: 0.8190
-Epoch: 099, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 100, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 101, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 102, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 103, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 104, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 105, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 106, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 107, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 108, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 109, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 110, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 111, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 112, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 113, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 114, Train: 0.9786, Val: 0.7980, Test: 0.8220
-Epoch: 115, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 116, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 117, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 118, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 119, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 120, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 121, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 122, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 123, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 124, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 125, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 126, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 127, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 128, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 129, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 130, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 131, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 132, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 133, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 134, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 135, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 136, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 137, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 138, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 139, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 140, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 141, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 142, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 143, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 144, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 145, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 146, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 147, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 148, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 149, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 150, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 151, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 152, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 153, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 154, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 155, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 156, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 157, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 158, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 159, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 160, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 161, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 162, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 163, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 164, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 165, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 166, Train: 0.9929, Val: 0.7980, Test: 0.8220
-Epoch: 167, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 168, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 169, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 170, Train: 0.9857, Val: 0.7980, Test: 0.8220
-Epoch: 171, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 172, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 173, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 174, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 175, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 176, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 177, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 178, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 179, Train: 0.9857, Val: 0.8000, Test: 0.8210
-Epoch: 180, Train: 0.9857, Val: 0.8000, Test: 0.8210
-Epoch: 181, Train: 0.9857, Val: 0.8000, Test: 0.8210
-Epoch: 182, Train: 0.9857, Val: 0.8000, Test: 0.8210
-Epoch: 183, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 184, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 185, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 186, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 187, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 188, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 189, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 190, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 191, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 192, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 193, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 194, Train: 1.0000, Val: 0.8000, Test: 0.8210
-Epoch: 195, Train: 0.9929, Val: 0.8000, Test: 0.8210
-Epoch: 196, Train: 0.9929, Val: 0.8000, Test: 0.8210
+......
 Epoch: 197, Train: 0.9929, Val: 0.8000, Test: 0.8210
 Epoch: 198, Train: 0.9929, Val: 0.8000, Test: 0.8210
 Epoch: 199, Train: 0.9929, Val: 0.8000, Test: 0.8210
@@ -328,7 +136,7 @@ Epoch: 200, Train: 0.9929, Val: 0.8000, Test: 0.8210
 (gnn) F:\OneDrive\研一\GNN\pytorch_geometric-master\examples>
 ```
 
-### PyG输入数据处理
+### PyG输入数据格式
 
 PyG官方文档：https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html
 
@@ -407,10 +215,26 @@ Cora数据集（引文网络）是由众多机器学习领域的论文组成，�
    35	1050679
    ```
 
-### Core数据预处理
+### Cora数据预处理
+
+需要从cora原始文件中提取出相关数据信息，并转换为GNN能够识别的格式。
+
+GNN的输入数据简单来讲需要以下数据：
+
+- 节点node
+- 节点特征矩阵node feature matrix
+- 边edge
+- 边的特征矩阵edge feature matrix（非必须）
+- 训练目标y
+
+对于Cora数据集来说，可以从`.content`文件中提取节点的相关数据，包括节点，节点特征矩阵，训练目标；可以从`.cite`文件中提取边的数据，本例无边的特征矩阵数据。
 
 ```python
 import numpy as np
+import torch
+import matplotlib.pyplot as plt
+from torch_geometric.data import Data
+
 
 content_path = './cora/cora.content'
 cite_path = './cora/cora.cites'
@@ -455,32 +279,274 @@ y = np.array([label_dict[i] for i in label_list])
 # Input
 node_num = len(paper_list)         # 节点个数
 feat_dim = feature_list.shape[1]   # 特征维度
+stat_dim = 32                      # 状态维度
 num_class = len(labels)            # 节点种类数
 
-# 转换为输入数据格式
 x = torch.from_numpy(np.array(feature_list, dtype=np.float32))
 edge_index = torch.from_numpy(cites)
 y = torch.from_numpy(y)
-data = Data(x=x, edge_index=edge_index, y=y)
+data = Data(x = x, edge_index = edge_index, y = y)
 
 # 分割数据集
-data.train_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
-data.train_mask[:data.num_nodes - 1000] = 1  # 1708 train
-data.val_mask = None  # 0 valid
-data.test_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
-data.test_mask[data.num_nodes - 500:] = 1  # 500 test
+data.train_mask = torch.zeros(data.num_nodes, dtype=torch.uint8)
+data.train_mask[:data.num_nodes - 1000] = 1  #1708 train
+data.val_mask = None                        #0 valid
+data.test_mask = torch.zeros(data.num_nodes, dtype=torch.uint8)
+data.test_mask[data.num_nodes - 500:] = 1  #500 test
 data.num_classes = len(label_dict)
 
-# 输出数据集的有关数据
-print("{}Data Info{}".format("*" * 20, "*" * 20))
+# 输出图信息
+print("{}Data Info{}".format("*"*20, "*"*20))
 print("==> Is undirected graph : {}".format(data.is_undirected()))
-print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges / 2)))
+print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges/2)))
 print("==> Number of nodes : {}".format(data.num_nodes))
-print("==> Node feature dim : {}".format(data.num_features))
+print("==> Node feature dim : {}".format(data.num_node_features))
 print("==> Number of training nodes : {}".format(data.train_mask.sum().item()))
 print("==> Number of testing nodes : {}".format(data.test_mask.sum().item()))
 print("==> Number of classes : {}".format(data.num_classes))
-
-
 ```
+
+最终得到的Graph信息如下：
+
+```shell
+********************Data Info********************
+==> Is undirected graph : True
+==> Number of edges : 10858/2=5429
+==> Number of nodes : 2708
+==> Node feature dim : 1433
+==> Number of training nodes : 1708
+==> Number of testing nodes : 500
+==> Number of classes : 7
+```
+
+### 使用自处理的Cora数据集进行GCN的训练和节点分类
+
+训练和分类代码来自于PyG的官方实例gcn.py，对Cora数据集的预处理替换为上文中的方法。
+
+```python
+import os.path as osp
+import argparse
+
+import numpy as np
+import torch
+import torch.nn.functional as F
+from torch_geometric.data import Data
+from torch_geometric.datasets import Planetoid
+import torch_geometric.transforms as T
+from torch_geometric.nn import GCNConv, ChebConv  # noqa
+
+import matplotlib.pyplot as plt
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--use_gdc', action='store_true',
+                    help='Use GDC preprocessing.')
+args = parser.parse_args()
+
+# dataset = 'Cora'
+# path = osp.join(osp.dirname(osp.realpath(__file__)), '..', 'data', dataset)
+# dataset = Planetoid(path, dataset, transform=T.NormalizeFeatures())
+# data = dataset[0]
+
+# add my dataset process code
+def dataset_process():
+    content_path = './cora/cora.content'
+    cite_path = './cora/cora.cites'
+
+    with open(content_path, "r") as f:
+        contents = f.readlines()
+    with open(cite_path, "r") as f:
+        cites = f.readlines()
+
+    # contents数据切分 -> <paper> + <feature> + <label>
+    contents = np.array([np.array(line.strip().split("\t")) for line in contents])
+    # print(contents.shape) # (2708, 1435)
+    paper_list, feature_list, label_list = np.split(contents, [1, -1], axis=1)
+    paper_list, label_list = np.squeeze(paper_list), np.squeeze(label_list)
+
+    # paper -> dict
+    paper_dict = dict([(key, val) for val, key in enumerate(paper_list)])
+    # print(paper_dict[31336]) # '31336': 0
+
+    # label -> dict
+    labels = list(set(label_list))
+    label_dict = dict([(key, val) for val, key in enumerate(labels)])
+    # print(label_dict['Rule_learning']) # 'Rule_Learning': 0
+
+    # cites数据整理
+    cites = [line.strip().split("\t") for line in cites]
+    # 将cites中引用关系的paperID转换为paper_dict字典序，最后转置矩阵是为了满足PyG输入中edge_index的要求
+    # cite_id[0]为被引用文献的paper_id, cite_id[1]为引用文献的paper_id
+    cites = np.array([[paper_dict[cite_id[0]], paper_dict[cite_id[1]]] for cite_id in cites], np.int64).T
+    # cites.shape = (2, 5429)
+    cites = np.concatenate((cites, cites[::-1, :]), axis=1)
+    # cites.shape = (2, 5429*2)
+
+    # y构建
+    y = np.array([label_dict[i] for i in label_list])
+
+    x = torch.from_numpy(np.array(feature_list, dtype=np.float32))
+    edge_index = torch.from_numpy(cites)
+    y = torch.from_numpy(y)
+    data = Data(x=x, edge_index=edge_index, y=y)
+
+    # 分割数据集
+    data.train_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
+    data.train_mask[:data.num_nodes - 1000] = 1  # 1708 train
+    data.val_mask = None  # 0 valid
+    data.test_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
+    data.test_mask[data.num_nodes - 500:] = 1  # 500 test
+    data.num_classes = len(label_dict)
+
+    # 输出数据集的有关数据
+    print("{}Data Info{}".format("*" * 20, "*" * 20))
+    print("==> Is undirected graph : {}".format(data.is_undirected()))
+    print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges / 2)))
+    print("==> Number of nodes : {}".format(data.num_nodes))
+    print("==> Node feature dim : {}".format(data.num_features))
+    print("==> Number of training nodes : {}".format(data.train_mask.sum().item()))
+    print("==> Number of testing nodes : {}".format(data.test_mask.sum().item()))
+    print("==> Number of classes : {}".format(data.num_classes))
+
+    # 输出数据集各类别的条形统计图
+    print(f"{'-'*30} Label Info {'-'*30}")
+    print(("\n{}"*7).format(*[(i,j) for j,i in label_dict.items()]))
+    inds, nums = np.unique(y[data.train_mask].numpy(), return_counts=True)
+    plt.figure(1)
+    plt.subplot(121)
+    plt.bar(x=inds, height=nums, width=0.8, bottom=0, align='center')
+    plt.xticks(ticks=range(data.num_classes))
+    plt.xlabel(xlabel="Label Index")
+    plt.ylabel(ylabel="Sample Num")
+    plt.ylim((0, 600))
+    plt.title(label="Train Data Statics")
+    inds, nums = np.unique(y[data.test_mask].numpy(), return_counts=True)
+    plt.subplot(122)
+    plt.bar(x=inds, height=nums, width=0.8, bottom=0, align='center')
+    plt.xticks(ticks=range(data.num_classes))
+    plt.xlabel(xlabel="Label Index")
+    plt.ylabel(ylabel="Sample Num")
+    plt.ylim((0, 600))
+    plt.title(label="Test Data Statics")
+    plt.savefig("dataset_info.png")
+
+    return data
+
+
+# my dataset process function
+data = dataset_process()
+
+if args.use_gdc:
+    gdc = T.GDC(self_loop_weight=1, normalization_in='sym',
+                normalization_out='col',
+                diffusion_kwargs=dict(method='ppr', alpha=0.05),
+                sparsification_kwargs=dict(method='topk', k=128,
+                                           dim=0), exact=True)
+    data = gdc(data)
+
+
+class Net(torch.nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = GCNConv(data.num_features, 16, cached=True,
+                             normalize=not args.use_gdc)
+        self.conv2 = GCNConv(16, data.num_classes, cached=True,
+                             normalize=not args.use_gdc)
+        # self.conv1 = ChebConv(data.num_features, 16, K=2)
+        # self.conv2 = ChebConv(16, data.num_features, K=2)
+
+        self.reg_params = self.conv1.parameters()
+        self.non_reg_params = self.conv2.parameters()
+
+    def forward(self):
+        x, edge_index = data.x, data.edge_index
+        x = F.relu(self.conv1(x, edge_index))
+        x = F.dropout(x, training=self.training)
+        x = self.conv2(x, edge_index)
+        return F.log_softmax(x, dim=1)
+
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model, data = Net().to(device), data.to(device)
+optimizer = torch.optim.Adam([
+    dict(params=model.reg_params, weight_decay=5e-4),
+    dict(params=model.non_reg_params, weight_decay=0)
+], lr=0.01)
+
+
+def train():
+    model.train()
+    optimizer.zero_grad()
+    F.nll_loss(model()[data.train_mask], data.y[data.train_mask].long()).backward()
+    optimizer.step()
+
+
+@torch.no_grad()
+def test():
+    model.eval()
+    logits, accs = model(), []
+    for _, mask in data('train_mask', 'test_mask'):
+        pred = logits[mask].max(1)[1]
+        acc = pred.eq(data.y[mask]).sum().item() / mask.sum().item()
+        accs.append(acc)
+    return accs
+
+
+best_val_acc = test_acc = 0
+for epoch in range(1, 21):
+    train()
+    train_acc, test_acc = test()
+    log = 'Epoch: {:03d}, Train: {:.4f}, Test: {:.4f}'
+    print(log.format(epoch, train_acc, test_acc))
+```
+
+为了缩短计算时常并便于显示，训练轮次设定为20，此外还生成了训练集和测试集中各类别节点的数量情况：
+
+<img src="picture/dataset_info.png" alt="dataset_info" style="zoom: 80%;" />
+
+训练结果如下：
+
+```shell
+(gnn) F:\OneDrive\研一\GNN\GNN-KG-Review>python gcn_demo.py
+********************Data Info********************
+==> Is undirected graph : True
+==> Number of edges : 10858/2=5429
+==> Number of nodes : 2708
+==> Node feature dim : 1433
+==> Number of training nodes : 1708
+==> Number of testing nodes : 500
+==> Number of classes : 7
+------------------------------ Label Info ------------------------------
+
+(0, 'Probabilistic_Methods')
+(1, 'Neural_Networks')
+(2, 'Rule_Learning')
+(3, 'Reinforcement_Learning')
+(4, 'Theory')
+(5, 'Genetic_Algorithms')
+(6, 'Case_Based')
+Epoch: 001, Train: 0.4139, Test: 0.3660
+Epoch: 002, Train: 0.4256, Test: 0.3700
+Epoch: 003, Train: 0.4690, Test: 0.4020
+Epoch: 004, Train: 0.5498, Test: 0.4700
+Epoch: 005, Train: 0.6399, Test: 0.5440
+Epoch: 006, Train: 0.6996, Test: 0.5840
+Epoch: 007, Train: 0.7248, Test: 0.6260
+Epoch: 008, Train: 0.7424, Test: 0.6600
+Epoch: 009, Train: 0.7547, Test: 0.6660
+Epoch: 010, Train: 0.7646, Test: 0.6880
+Epoch: 011, Train: 0.7728, Test: 0.7000
+Epoch: 012, Train: 0.7863, Test: 0.7160
+Epoch: 013, Train: 0.7974, Test: 0.7280
+Epoch: 014, Train: 0.8185, Test: 0.7340
+Epoch: 015, Train: 0.8320, Test: 0.7420
+Epoch: 016, Train: 0.8460, Test: 0.7580
+Epoch: 017, Train: 0.8612, Test: 0.7820
+Epoch: 018, Train: 0.8712, Test: 0.7860
+Epoch: 019, Train: 0.8852, Test: 0.7960
+Epoch: 020, Train: 0.8964, Test: 0.8020
+
+(gnn) F:\OneDrive\研一\GNN\GNN-KG-Review>
+```
+
+
 

@@ -71,6 +71,7 @@ def dataset_process():
     data.test_mask[data.num_nodes - 500:] = 1  # 500 test
     data.num_classes = len(label_dict)
 
+    # 输出数据集的有关数据
     print("{}Data Info{}".format("*" * 20, "*" * 20))
     print("==> Is undirected graph : {}".format(data.is_undirected()))
     print("==> Number of edges : {}/2={}".format(data.num_edges, int(data.num_edges / 2)))
@@ -80,9 +81,9 @@ def dataset_process():
     print("==> Number of testing nodes : {}".format(data.test_mask.sum().item()))
     print("==> Number of classes : {}".format(data.num_classes))
 
+    # 输出数据集各类别的条形统计图
     print(f"{'-'*30} Label Info {'-'*30}")
     print(("\n{}"*7).format(*[(i,j) for j,i in label_dict.items()]))
-
     inds, nums = np.unique(y[data.train_mask].numpy(), return_counts=True)
     plt.figure(1)
     plt.subplot(121)
