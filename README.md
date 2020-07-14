@@ -6,7 +6,7 @@
 
 ## GNN概述及应用
 
-awosome information resource：
+### awosome information resource：
 
 - 清华大学NLP组：GNN介绍及必读文章https://github.com/thunlp/GNNPapers
 - 知乎：GNN阅读合集https://zhuanlan.zhihu.com/c_1139920494823342080
