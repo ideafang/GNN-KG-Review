@@ -333,3 +333,9 @@ class TwoLayerNet(torch.nn.Module):
 
 model = TwoLayerNet(D_in, H, D_out).cuda()
 ```
+
+## FizzBuzz
+
+游戏规则：从1开始往上数数，当遇到3的倍数的时候，说fizz，当遇到5的倍数，说buzz，当遇到15的倍数，就说fizzbuzz，其他情况下正常数数。
+
+这种函数不能被线性拟合，因此可以搭建一个两层神经网络进行尝试。
