@@ -37,8 +37,14 @@ with open(cite_path, "r") as f:
     cites = f.readlines()
 
 cites = [line.strip().split("\t") for line in cites]
-cites = cites[:10]
+# cites = cites[:10]
 print(len(cites))  # 5429
+'''
+方法一：
+遍历查询每个节点，然后构建关系，最后存储到neo4j
+特别慢
+'''
+
 for cite_list in cites:
     paper1, paper2 = cite_list[0], cite_list[1]
     a = matcher.match("Paper").where(f"_.name='{paper1}'").first()
