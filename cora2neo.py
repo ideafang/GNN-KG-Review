@@ -43,6 +43,7 @@ for cite_list in cites:
     paper1, paper2 = cite_list[0], cite_list[1]
     a = matcher.match("Paper").where(f"_.name='{paper1}'").first()
     b = matcher.match("Paper").where(f"_.name='{paper2}'").first()
-    rel = Relationship()
+    rel = Relationship(b, "CITE", a)
+    graph.create(rel)
 
 
