@@ -40,9 +40,9 @@ cites = [line.strip().split("\t") for line in cites]
 cites = cites[:10]
 print(len(cites))  # 5429
 for cite_list in cites:
-    # paper1, paper2 = cite_list[0], cite_list[1]
-    # a = matcher.match("Paper").where(f"_.name='{paper1}'").first()
-    # b = matcher.match("Paper").where(f"_.name='{paper2}'").first()
-    # rel = Relationship()
+    paper1, paper2 = cite_list[0], cite_list[1]
+    a = matcher.match("Paper").where(f"_.name='{paper1}'").first()
+    b = matcher.match("Paper").where(f"_.name='{paper2}'").first()
+    rel = Relationship()
 
 
