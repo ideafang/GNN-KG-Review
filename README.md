@@ -87,7 +87,9 @@ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 
 最新版本为pytorch=1.5.1
 
-#### PyG模块安装（需科学上网，不然可能因为下载包不全而报错）
+#### PyG模块安装
+
+（需科学上网，不然可能因为下载包不全而报错）
 
 ```shell
 pip install torch-scatter==latest+cu102 -f https://pytorch-geometric.com/whl/torch-1.5.0.html
@@ -553,3 +555,12 @@ Epoch: 020, Train: 0.8964, Test: 0.8020
 ## Pytorch学习
 
 见pytorch文件夹中的[README](./pytorch/README.md)文档
+
+## Graph图存储
+
+### neo4j介绍
+
+Neo4j是最常见的图数据库，其他还有JanusGraph，HuguGraph，TigerGraph，Gstore很多种类。其中Neo4j是最常用，也是完成度最高，上手最快的一款图数据库应用。目前大部分知识图谱均使用Neo4j作为图存储工具，因此其社区教程和QA相比其他图数据库更加完善。
+
+### Cora2neo
+
