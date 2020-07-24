@@ -67,8 +67,6 @@ GNN采用在每个节点上分别传播（propagate）的方式进行学习，�
 - 图自编码器（Graph AutoEncoder），因为该模型通常使用无监督学习方式（unsupervised）
 - 图生成网络（Graph Generative Networks）,因为是生成式网络。
 
-
-
 ## GNN实战
 
 ### PyG框架安装
@@ -335,7 +333,7 @@ import torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.datasets import Planetoid
 import torch_geometric.transforms as T
-from torch_geometric.nn import GCNConv, ChebConv  # noqa
+from torch_geometric.nn import GCNConv, ChebConv
 
 import matplotlib.pyplot as plt
 
@@ -563,4 +561,35 @@ Epoch: 020, Train: 0.8964, Test: 0.8020
 Neo4j是最常见的图数据库，其他还有JanusGraph，HuguGraph，TigerGraph，Gstore很多种类。其中Neo4j是最常用，也是完成度最高，上手最快的一款图数据库应用。目前大部分知识图谱均使用Neo4j作为图存储工具，因此其社区教程和QA相比其他图数据库更加完善。
 
 ### Cora2neo
+
+在Neo4j中，采用先添加节点Node，然后添加节点之间的关系Relationship。在Python下对Neo4j读写采用的是py2neo库。
+
+#### 添加节点
+
+从`cora.content`中得到`paper_list`和`feature_list`之后，通过创建Node类，然后调用create方法添加节点
+
+```python
+graph.delete_all() # 清空图数据库
+for i in range(paper_list.shape[0]):
+    feature = dict([(str(val), key) for val, key in enumerate(feature_list[i])])
+    a = Node('Paper', name=str(paper_list[i][0]), **feature)
+    graph.create(a)
+```
+
+但通过测试发现，这种方法在进行大量节点的添加时，速度很慢（本文添加2708个带有1435个属性的节点使用了近两分钟）。在查阅官方文档和一些资料后，发现可以使用事务的方式，统一创建子图，然后再添加到图数据库中（待完成）
+
+#### 添加关系
+
+从`cora.cite`中得到论文引用关系`cite`之后，通过查询指定名称的节点，然后为其创建相应的引用关系，最后调用create方法添加关系
+
+```python
+for cite_list in cites:
+    paper1, paper2 = cite_list[0], cite_list[1]
+    a = matcher.match("Paper").where(f"_.name='{paper1}'").first()
+    b = matcher.match("Paper").where(f"_.name='{paper2}'").first()
+    rel = Relationship(b, "CITE", a)
+    graph.create(rel)
+```
+
+测试发现，因为需要先查询两次节点的原因，关系的添加很慢，15分钟只添加了2000条左右的关系，需要优化。
 
