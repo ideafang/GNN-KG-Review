@@ -2,7 +2,29 @@
 
 ## 目录：
 
-[TOC]
+- [GNN概述及应用](#GNN概述及应用)
+
+  - [GNN简介](#GNN简介)
+
+  - [GNN起源](#GNN起源)
+  - [GNN和传统神经网络的区别](#GNN和传统神经网络的区别)
+  - [GNN分类](#GNN分类)
+
+- [GNN实战](#GNN实战)
+
+  - [PyG框架安装](#PyG框架安装)
+  - [PyG框架测试](#PyG框架测试)
+  - [PyG输入数据格式](#PyG输入数据格式)
+  - [Cora数据集介绍](#Cora数据集介绍)
+  - [Cora数据集预处理](#Cora数据集预处理)
+  - [基于GCN的节点分类demo](#基于GCN的节点分类demo)
+
+- [Pytorch学习](#Pytorch学习)
+
+- [Graph图存储](#Graph图存储)
+
+  - [Neo4j介绍](#Neo4j介绍)
+  - [Cora2neo](#Cora2neo)
 
 ## 任务：
 
@@ -323,7 +345,7 @@ print("==> Number of classes : {}".format(data.num_classes))
 ==> Number of classes : 7
 ```
 
-### 使用自处理的Cora数据集进行GCN的训练和节点分类
+### 基于GCN的节点分类demo
 
 训练和分类代码来自于PyG的官方实例gcn.py，对Cora数据集的预处理替换为上文中的方法。
 
