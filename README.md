@@ -593,3 +593,83 @@ for cite_list in cites:
 
 测试发现，因为需要先查询两次节点的原因，关系的添加很慢，15分钟只添加了2000条左右的关系，需要优化。
 
+#### 存储优化
+
+在`cora.cite`中，是按照被引文献进行排序的，即引用同一篇文献的引用关系放在一起，例如文件的前十行均为paperID为35的文章
+
+```shell
+['35', '1033']
+['35', '103482']
+['35', '103515']
+['35', '1050679']
+['35', '1103960']
+['35', '1103985']
+['35', '1109199']
+['35', '1112911']
+['35', '1113438']
+['35', '1113831']
+```
+
+因此可以在创建节点时，直接创建关系，然后一起添加到图数据库中。
+
+整体思路是
+
+```python
+import numpy as np
+from py2neo import Graph, Node, Relationship, NodeMatcher
+
+graph = Graph("http://localhost//:7474", username="neo4j", password="123456")
+matcher = NodeMatcher(graph)
+
+content_path = './cora/cora.content'
+cite_path = './cora/cora.cites'
+
+with open(content_path, "r") as f:
+    contents = f.readlines()
+with open(cite_path, "r") as f:
+    cites = f.readlines()
+
+contents = np.array([line.strip().split('\t') for line in contents])
+paper_list, feature_list, label_list = np.split(contents, [1, -1], axis=1)
+feature_list = np.concatenate((feature_list, label_list), axis=1)
+paper_list = np.squeeze(paper_list)
+cites = [line.strip().split("\t") for line in cites]  # 5429
+
+node_dict = dict([(key, 0) for val, key in enumerate(paper_list)])  # 校验paper是否已添加入数据库
+paper_dict = dict([(key, val) for val, key in enumerate(paper_list)])  # 生成PaperID到矩阵行数的映射
+
+citedID = '0'
+a_node = Node()
+b_node = Node()
+graph.delete_all()  # 清空图数据库
+index = 0
+
+for cite_list in cites:
+    paper1, paper2 = cite_list[0], cite_list[1]
+    # 先后创建或查询a_node和b_node
+    if paper1 != citedID:  # a_node发生改变，需要查找或创建
+        if node_dict[paper1] == 0:  #a_node不在数据库中，需要创建
+            feature = dict([(str(val), key) for val, key in enumerate(feature_list[paper_dict[paper1]])])
+            a_node = Node("Paper", name=paper1, **feature)
+            graph.create(a_node)
+            node_dict[paper1] = 1
+        else:  # a_node在数据库中，需要查找
+            a_node = matcher.match("Paper").where(f"_.name='{paper1}'").first()
+        citedID = paper1
+    # a_node已有，只需查找或创建b_node
+    if node_dict[paper2] == 0:  # b_node不在数据库中，需要创建
+        feature = dict([(str(val), key) for val, key in enumerate(feature_list[paper_dict[paper2]])])
+        b_node = Node("Paper", name=paper2, **feature)
+        graph.create(b_node)
+        node_dict[paper2] = 1
+    else:  # b_node在数据库中，需要查找
+        b_node = matcher.match("Paper").where(f"_.name='{paper2}'").first()
+    # 得到关系的两个对应节点后，创建关系
+    rel = Relationship(b_node, "CITE", a_node)  # 创建关系
+    graph.create(rel)
+
+    if index%100 == 0:
+        print(f"{index} relations have been added")
+    index += 1
+```
+
