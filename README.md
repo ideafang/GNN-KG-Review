@@ -715,20 +715,31 @@ Loss：cross-entropy
 
 复现代码仓库：https://github.com/MichSchli/RelationPrediction
 
-环境：python3.5 + tensorflow 1.4.1 (RTX 2080 Ti)
+环境：python3.5 + tensorflow 1.4.1 (RTX 2080 Ti * 2)
 
 ### gcn_block.exp
 
 ```shell
-{'General': {'NegativeSampleRate': '10', 'ExperimentName': 'models/GcnBlock', 'GraphBatchSize': '30000', 'GraphSplitSize': '0.5'}, 'Evaluation': {'Metric': 'MRR'}, 'Encoder': {'InternalEncoderDimension': '500', 'RandomInput': 'No', 'AddDiagonal': 'No', 'SkipConnections': 'None', 'PartiallyRandomInput': 'No', 'DiagonalCoefficients': 'No', 'DropoutKeepProbability': '0.8', 'Concatenation': 'Yes', 'StoreEdgeData': 'No', 'UseInputTransform': 'Yes', 'Name': 'gcn_basis', 'NumberOfBasisFunctions': '100', 'UseOutputTransform': 'No', 'NumberOfLayers': '2'}, 'Shared': {'CodeDimension': '500'}, 'Optimizer': {'MaxGradientNorm': '1', 'Algorithm': {'learning_rate': '0.01', 'Name': 'Adam'}, 'EarlyStopping': {'BurninPhaseDuration': '6000', 'CheckEvery': '2000'}, 'ReportTrainLossEvery': '100'}, 'Decoder': {'RegularizationParameter': '0.01', 'Name': 'bilinear-diag'}}
+(tf-gnn) user-lqz@admin:~/workspace/FangHonglin/cuda_test/RelationPrediction$ bash run-train.sh /settings/gcn_block.exp
+WARNING (theano.configdefaults): install mkl with `conda install mkl-service`: No module named 'mkl'
+{'Decoder': {'Name': 'bilinear-diag', 'RegularizationParameter': '0.01'}, 'Encoder': {'InternalEncoderDimension': '500', 'Concatenation': 'Yes', 'StoreEdgeData': 'No', 'SkipConnections': 'None', 'Name': 'gcn_basis', 'DiagonalCoefficients': 'No', 'PartiallyRandomInput': 'No', 'UseOutputTransform': 'No', 'AddDiagonal': 'No', 'UseInputTransform': 'Yes', 'RandomInput': 'No', 'DropoutKeepProbability': '0.8', 'NumberOfLayers': '2', 'NumberOfBasisFunctions': '100'}, 'Evaluation': {'Metric': 'MRR'}, 'Shared': {'CodeDimension': '500'}, 'Optimizer': {'Algorithm': {'Name': 'Adam', 'learning_rate': '0.01'}, 'ReportTrainLossEvery': '100', 'EarlyStopping': {'CheckEvery': '2000', 'BurninPhaseDuration': '6000'}, 'MaxGradientNorm': '1'}, 'General': {'ExperimentName': 'models/GcnBlock', 'GraphSplitSize': '0.5', 'NegativeSampleRate': '10', 'GraphBatchSize': '30000'}}
 272115
 [<tf.Tensor 'graph_edges:0' shape=(?, 3) dtype=int32>, <tf.Tensor 'Placeholder_1:0' shape=(?, 3) dtype=int32>, <tf.Tensor 'Placeholder:0' shape=(?,) dtype=float32>]
-2020-07-30 20:16:57.140875: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
-2020-07-30 20:16:57.500474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+2020-07-31 21:01:18.316900: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-07-31 21:01:18.558220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:82:00.0
+totalMemory: 10.76GiB freeMemory: 10.45GiB
+2020-07-31 21:01:18.753845: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties:
 name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
 pciBusID: 0000:83:00.0
-totalMemory: 10.76GiB freeMemory: 10.60GiB
-2020-07-30 20:16:57.500535: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:83:00.0, compute capability: 7.5)
+totalMemory: 10.76GiB freeMemory: 10.45GiB
+2020-07-31 21:01:18.754027: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2020-07-31 21:01:18.754105: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1
+2020-07-31 21:01:18.754115: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y N
+2020-07-31 21:01:18.754122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   N Y
+2020-07-31 21:01:18.754135: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0)-> (device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:82:00.0, compute capability: 7.5)
+2020-07-31 21:01:18.754143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1)-> (device: 1, name: GeForce RTX 2080 Ti, pci bus id: 0000:83:00.0, compute capability: 7.5)
 SampleTransformer
 GradientClipping
 Adam
@@ -738,6 +749,6 @@ ModelSaver
 WARNING:tensorflow:From /home/user-lqz/anaconda3/envs/tf-gnn/lib/python3.5/site-packages/tensorflow/python/util/tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
 Instructions for updating:
 Use `tf.global_variables_initializer` instead.
-Initial loss: 1.49122
+Initial loss: 1.25448
 ```
 
