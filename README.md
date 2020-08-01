@@ -750,5 +750,206 @@ WARNING:tensorflow:From /home/user-lqz/anaconda3/envs/tf-gnn/lib/python3.5/site-
 Instructions for updating:
 Use `tf.global_variables_initializer` instead.
 Initial loss: 1.25448
+Average train loss for iteration 1-100: 0.267123520225
+Average train loss for iteration 101-200: 0.148406568617
+Average train loss for iteration 201-300: 0.122154484317
+```
+
+最后依然OOM爆显存了.....
+
+根据Github [Issue#8](https://github.com/MichSchli/RelationPrediction/issues/8) **[@rayrayraykk](https://github.com/rayrayraykk)**的方法，将`gcn_block.exp`中的`GraphBatchSize`从30000改为300，`InternalEncoderDimension`和`CodeDimension`从500改为200，模型可以运行，虽然还是调用的CPU计算，但计算速度大幅增快。
+
+```shell
+WARNING (theano.configdefaults): install mkl with `conda install mkl-service`: No module named 'mkl'
+{'Decoder': {'Name': 'bilinear-diag', 'RegularizationParameter': '0.01'}, 'Encoder': {'UseOutputTransform': 'No', 'DropoutKeepProbability': '0.8', 'StoreEdgeData': 'No', 'NumberOfBasisFunctions': '100', 'Name': 'gcn_basis', 'UseInputTransform': 'Yes', 'InternalEncoderDimension': '200', 'AddDiagonal': 'No', 'DiagonalCoefficients': 'No', 'Concatenation': 'Yes', 'PartiallyRandomInput': 'No', 'SkipConnections': 'None', 'NumberOfLayers': '2', 'RandomInput': 'No'}, 'General': {'GraphBatchSize': '300', 'ExperimentName': 'models/GcnBlock', 'NegativeSampleRate': '10', 'GraphSplitSize': '0.5'}, 'Evaluation': {'Metric': 'MRR'}, 'Shared': {'CodeDimension': '200'}, 'Optimizer': {'ReportTrainLossEvery': '100', 'EarlyStopping': {'BurninPhaseDuration': '6000', 'CheckEvery': '2000'}, 'MaxGradientNorm': '1', 'Algorithm': {'Name': 'Adam', 'learning_rate': '0.01'}}}
+272115
+[<tf.Tensor 'graph_edges:0' shape=(?, 3) dtype=int32>, <tf.Tensor 'Placeholder_1:0' shape=(?, 3) dtype=int32>, <tf.Tensor 'Placeholder:0' shape=(?,) dtype=float32>]
+2020-08-01 18:32:23.568991: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-08-01 18:32:23.943096: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:82:00.0
+totalMemory: 10.76GiB freeMemory: 10.60GiB
+2020-08-01 18:32:24.130528: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:83:00.0
+totalMemory: 10.76GiB freeMemory: 10.60GiB
+2020-08-01 18:32:24.130716: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2020-08-01 18:32:24.130816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2020-08-01 18:32:24.130834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y N 
+2020-08-01 18:32:24.130844: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   N Y 
+2020-08-01 18:32:24.130860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:82:00.0, compute capability: 7.5)
+2020-08-01 18:32:24.130876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce RTX 2080 Ti, pci bus id: 0000:83:00.0, compute capability: 7.5)
+SampleTransformer
+GradientClipping
+Adam
+TrainLossReporter
+EarlyStopper
+ModelSaver
+WARNING:tensorflow:From /home/user-lqz/anaconda3/envs/tf-gnn/lib/python3.5/site-packages/tensorflow/python/util/tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Initial loss: 0.733639
+Average train loss for iteration 1-100: 0.398559064865
+Average train loss for iteration 101-200: 0.314240244925
+Average train loss for iteration 201-300: 0.283124372214
+Average train loss for iteration 301-400: 0.262287636399
+Average train loss for iteration 401-500: 0.244079045802
+Average train loss for iteration 501-600: 0.224757089317
+Average train loss for iteration 601-700: 0.217351132631
+Average train loss for iteration 701-800: 0.20891327545
+Average train loss for iteration 801-900: 0.197149130404
+Average train loss for iteration 901-1000: 0.186215469241
+Average train loss for iteration 1001-1100: 0.179507168084
+Average train loss for iteration 1101-1200: 0.181720136255
+Average train loss for iteration 1201-1300: 0.180589640588
+Average train loss for iteration 1301-1400: 0.174662291855
+Average train loss for iteration 1401-1500: 0.166378410906
+Average train loss for iteration 1501-1600: 0.161896246821
+Average train loss for iteration 1601-1700: 0.161435388848
+Average train loss for iteration 1701-1800: 0.159836556613
+Average train loss for iteration 1801-1900: 0.162233484685
+	    Raw	    Filtered
+MRR	    0.012	0.012
+H@1	    0.003	0.003
+H@3	    0.008	0.008
+H@10	0.021	0.022
+Tested validation score at iteration 2000. Result: 0.0115082829409
+saving...
+Average train loss for iteration 1901-2000: 0.151952287182
+Average train loss for iteration 2001-2100: 0.152650370747
+Average train loss for iteration 2101-2200: 0.149650777802
+Average train loss for iteration 2201-2300: 0.149231404066
+Average train loss for iteration 2301-2400: 0.150278929994
+Average train loss for iteration 2401-2500: 0.151916629821
+Average train loss for iteration 2501-2600: 0.143547384217
+Average train loss for iteration 2601-2700: 0.143923636898
+Average train loss for iteration 2701-2800: 0.141646012366
+Average train loss for iteration 2801-2900: 0.141806647405
+Average train loss for iteration 2901-3000: 0.142812938094
+Average train loss for iteration 3001-3100: 0.140599277988
+Average train loss for iteration 3101-3200: 0.13751272589
+Average train loss for iteration 3201-3300: 0.139074690044
+Average train loss for iteration 3301-3400: 0.137135729194
+Average train loss for iteration 3401-3500: 0.136827448159
+Average train loss for iteration 3501-3600: 0.1353039518
+Average train loss for iteration 3601-3700: 0.13576267533
+Average train loss for iteration 3701-3800: 0.138574075177
+Average train loss for iteration 3801-3900: 0.135007323623
+	    Raw	    Filtered
+MRR	    0.017	0.018
+H@1	    0.006	0.006
+H@3	    0.013	0.014
+H@10	0.031	0.033
+Tested validation score at iteration 4000. Result: 0.0173423935426
+saving...
+Average train loss for iteration 3901-4000: 0.135105981305
+Average train loss for iteration 4001-4100: 0.136301774904
+Average train loss for iteration 4101-4200: 0.133662451655
+Average train loss for iteration 4201-4300: 0.135636581704
+Average train loss for iteration 4301-4400: 0.132769066095
+Average train loss for iteration 4401-4500: 0.133558651209
+Average train loss for iteration 4501-4600: 0.133253392652
+Average train loss for iteration 4601-4700: 0.134220164716
+Average train loss for iteration 4701-4800: 0.132240785509
+Average train loss for iteration 4801-4900: 0.132114236206
+Average train loss for iteration 4901-5000: 0.130822513774
+Average train loss for iteration 5001-5100: 0.130252244174
+Average train loss for iteration 5101-5200: 0.130456224829
+Average train loss for iteration 5201-5300: 0.132644971162
+Average train loss for iteration 5301-5400: 0.128310849592
+Average train loss for iteration 5401-5500: 0.129062893018
+Average train loss for iteration 5501-5600: 0.131218217239
+Average train loss for iteration 5601-5700: 0.128327239677
+Average train loss for iteration 5701-5800: 0.128901169524
+Average train loss for iteration 5801-5900: 0.127758514881
+		Raw		Filtered
+MRR		0.02	0.02
+H@1		0.007	0.007
+H@3		0.016	0.016
+H@10	0.038	0.04
+Tested validation score at iteration 6000. Result: 0.019700886744
+saving...
+Average train loss for iteration 5901-6000: 0.128414031491
+Average train loss for iteration 6001-6100: 0.128678858802
+Average train loss for iteration 6101-6200: 0.129787306339
+Average train loss for iteration 6201-6300: 0.130661423728
+Average train loss for iteration 6301-6400: 0.125296980664
+Average train loss for iteration 6401-6500: 0.126010311395
+Average train loss for iteration 6501-6600: 0.127962349132
+Average train loss for iteration 6601-6700: 0.127901101038
+Average train loss for iteration 6701-6800: 0.125632699803
+Average train loss for iteration 6801-6900: 0.125565705001
+Average train loss for iteration 6901-7000: 0.126050799638
+Average train loss for iteration 7001-7100: 0.123286731467
+Average train loss for iteration 7101-7200: 0.129371566772
+Average train loss for iteration 7201-7300: 0.13400388822
+Average train loss for iteration 7301-7400: 0.127659037486
+Average train loss for iteration 7401-7500: 0.125996452421
+Average train loss for iteration 7501-7600: 0.12586839363
+Average train loss for iteration 7601-7700: 0.124882008061
+Average train loss for iteration 7701-7800: 0.124159323312
+Average train loss for iteration 7801-7900: 0.124195801616
+		Raw		Filtered
+MRR		0.022	0.023
+H@1		0.008	0.008
+H@3		0.019	0.019
+H@10	0.042	0.044
+Tested validation score at iteration 8000. Result: 0.022275383556
+saving...
+Average train loss for iteration 7901-8000: 0.127038534582
+Average train loss for iteration 8001-8100: 0.124251663908
+Average train loss for iteration 8101-8200: 0.124876790196
+Average train loss for iteration 8201-8300: 0.12558349967
+Average train loss for iteration 8301-8400: 0.124531253949
+Average train loss for iteration 8401-8500: 0.125098097101
+Average train loss for iteration 8501-8600: 0.124462078065
+Average train loss for iteration 8601-8700: 0.1262208803
+Average train loss for iteration 8701-8800: 0.126135697663
+Average train loss for iteration 8801-8900: 0.125756008253
+Average train loss for iteration 8901-9000: 0.125989745408
+Average train loss for iteration 9001-9100: 0.125483163223
+Average train loss for iteration 9101-9200: 0.124200710543
+Average train loss for iteration 9201-9300: 0.122691995502
+Average train loss for iteration 9301-9400: 0.122893726453
+Average train loss for iteration 9401-9500: 0.125107270852
+Average train loss for iteration 9501-9600: 0.126149047986
+Average train loss for iteration 9601-9700: 0.124828136191
+Average train loss for iteration 9701-9800: 0.123932513446
+Average train loss for iteration 9801-9900: 0.123825722784
+		Raw		Filtered
+MRR		0.029	0.032
+H@1		0.012	0.012
+H@3		0.025	0.028
+H@10	0.055	0.059
+Tested validation score at iteration 10000. Result: 0.032109358205
+saving...
+Average train loss for iteration 9901-10000: 0.122377600595
+Average train loss for iteration 10001-10100: 0.122479913607
+Average train loss for iteration 10101-10200: 0.126490946785
+Average train loss for iteration 10201-10300: 0.131784814745
+Average train loss for iteration 10301-10400: 0.124623856246
+Average train loss for iteration 10401-10500: 0.126125487313
+Average train loss for iteration 10501-10600: 0.124828394502
+Average train loss for iteration 10601-10700: 0.124754978046
+Average train loss for iteration 10701-10800: 0.126575767472
+Average train loss for iteration 10801-10900: 0.124978147447
+Average train loss for iteration 10901-11000: 0.124048930407
+Average train loss for iteration 11001-11100: 0.125314957276
+Average train loss for iteration 11101-11200: 0.12510120675
+Average train loss for iteration 11201-11300: 0.123760017082
+Average train loss for iteration 11301-11400: 0.129462359548
+Average train loss for iteration 11401-11500: 0.125138808787
+Average train loss for iteration 11501-11600: 0.121126376614
+Average train loss for iteration 11601-11700: 0.125720160753
+Average train loss for iteration 11701-11800: 0.124498691037
+Average train loss for iteration 11801-11900: 0.124156257957
+		Raw		Filtered
+MRR		0.027	0.029
+H@1		0.009	0.01
+H@3		0.025	0.027
+H@10	0.056	0.059
+Tested validation score at iteration 12000. Result: 0.0279832806244
+Stopping criterion reached.
+Stopping training.
 ```
 
