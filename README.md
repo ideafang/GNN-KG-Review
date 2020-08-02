@@ -953,3 +953,16 @@ Stopping criterion reached.
 Stopping training.
 ```
 
+### FB15k-237数据集简介
+
+FB15k-237是FreeBase数据集的一个子集，包含237种关系和14k种实体。
+
+|   类别   |  数量   |
+| :------: | :-----: |
+| Relation |   237   |
+|  Entity  | 14,541  |
+|  Train   | 271,115 |
+|  Valid   | 17,535  |
+|   Test   | 20,466  |
+
+FreeBase是一个采用结构化数据的大型合作知识库，2014年被Google关闭，但由于其数据整体设计完善，常用来作为知识图谱方面研究的评价数据集。
