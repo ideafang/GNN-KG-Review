@@ -9,7 +9,6 @@
   - [GNN起源](#GNN起源)
   - [GNN和传统神经网络的区别](#GNN和传统神经网络的区别)
   - [GNN分类](#GNN分类)
-
 - [GNN实战](#GNN实战)
 
   - [PyG框架安装](#PyG框架安装)
@@ -18,13 +17,13 @@
   - [Cora数据集介绍](#Cora数据集介绍)
   - [Cora数据预处理](#Cora数据预处理)
   - [基于GCN的节点分类问题demo](#基于GCN的节点分类问题demo)
-
 - [Pytorch学习](#Pytorch学习)
-
 - [Graph图存储](#Graph图存储)
-
-  - [Neo4j介绍](#Neo4j介绍)
+- [Neo4j介绍](#Neo4j介绍)
   - [Cora2neo](#Cora2neo)
+- [GCN对边的学习效果](#GCN对边的学习效果)
+  - [Link prediction](#gcn_block.exp)
+  - [FB15k-237](#FB15k-237数据集简介)
 
 ## 任务：
 
@@ -953,6 +952,8 @@ Stopping criterion reached.
 Stopping training.
 ```
 
+但最终结果远达不到论文中汇报的程度。
+
 ### FB15k-237数据集简介
 
 FB15k-237是FreeBase数据集的一个子集，包含237种关系和14k种实体。
@@ -966,3 +967,199 @@ FB15k-237是FreeBase数据集的一个子集，包含237种关系和14k种实体
 |   Test   | 20,466  |
 
 FreeBase是一个采用结构化数据的大型合作知识库，2014年被Google关闭，但由于其数据整体设计完善，常用来作为知识图谱方面研究的评价数据集。
+
+#### 数据结构
+
+<img src="picture/1566878268706-1d7b3ccc-992c-440d-b237-36720d0317e4.png" alt="image.png" style="zoom: 67%;" />
+
+- Topic：实例或实体，每一条信息叫做Topic。比如：姚明。
+- Type：类型或概念，每个Topic可以属于多个Type。比如：人、运动员。
+- Domain：域，对类型的分组，便于schema管理。比如：人物。
+- Property：属性，每个Type可以设置一个或多个属性。比如：出生日期、所在球队。
+
+
+
+### DGL框架二开经历
+
+在测试DGL框架实现的link prediction时，程序一直报错。
+
+对于`No module named xxx`等问题，我通过从GitHub拖取最新的py文件进行替换来解决。
+
+但最终有一个错误在替换了最新文件后依然存在。
+
+```shell
+Traceback (most recent call last):
+  File "link_predict.py", line 259, in <module>
+    main(args)
+  File "link_predict.py", line 89, in main
+    data = load_data(args.dataset)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\knowledge_graph.py", line 721, in load_data
+    return FB15k237Dataset()
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\knowledge_graph.py", line 428, in __init__
+    super(FB15k237Dataset, self).__init__(name, reverse, raw_dir, force_reload, verbose)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\knowledge_graph.py", line 48, in __init__
+    verbose=verbose)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\dgl_dataset.py", line 263, in __init__
+    verbose=verbose)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\dgl_dataset.py", line 71, in __init__
+    self._load()
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\dgl_dataset.py", line 155, in _load
+    self.process()
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\knowledge_graph.py", line 90, in process
+    g, data = build_knowledge_graph(num_nodes, num_rels, train, valid, test, reverse=self.reverse)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\data\knowledge_graph.py", line 321, in build_knowledge_graph
+    g = dgl_graph((s, d), num_nodes=num_nodes)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\convert.py", line 137, in graph
+    restrict_format=restrict_format)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\convert.py", line 811, in create_from_edges
+    num_ntypes, urange, vrange, u, v, restrict_format)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\heterograph_index.py", line 982, in create_unitgraph_from_coo
+    F.to_dgl_nd(row), F.to_dgl_nd(col),
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\backend\__init__.py", line 94, in to_dgl_nd
+    return zerocopy_to_dgl_ndarray(data)
+  File "D:\Anaconda3\envs\gnn\lib\site-packages\dgl\backend\pytorch\tensor.py", line 283, in zerocopy_to_dgl_ndarray
+    return nd.from_dlpack(dlpack.to_dlpack(input.contiguous()))
+AttributeError: 'Index' object has no attribute 'contiguous'
+```
+
+于是我从原始文件开始，沿着错误路径一步一步查阅源码，并试图理解相关代码的意思。
+
+最终发现在DGL的相关文件中，缺少了一些方法，因此走上了二开的不归路.....
+
+错误出在加载原始数据的load_data方法，错误引用路径如下：
+
+`link_predict -> dgl/data/knowledge_graph -> dgl/data/dgl_dataset -> dgl/data/knowledge_graph -> dgl/convert -> dgl/heterograph_index -> dgl/backend/__init__ -> dgl/backend/pytorch/tensor`
+
+最终的报错显示是因为`input`对象不存在`contiguous`方法。
+
+在经过一天的时间阅读相关代码后，发现`input`的类型是`dgl/utils.Index`，找到`dgl/utils/internal.py`文件，确实缺少`contiguous`方法。Github最新的代码中也没有......
+
+最终决定自己实现这个方法
+
+首先需要弄清楚缺失函数的作用。通过引用发现dlpack是Pytorch.util的一个对象，通过查阅资料得知，`to_dlpack(Tensor)`的传入参数应该为一个Tensor张量。再结合前几天阅读代码得到input的类型，这样就明白缺失的`contiguous()`作用是将`utils.Index`转化为`Tensor`张量。
+
+```python
+import torch
+def contiguous(self):
+    if self._pydata is None:
+        self._pydata = self.tonumpy()
+    return torch.from_numpy(self._pydata)
+```
+
+添加之后，这项错误就通过了。然而在`knowledge_graph`的`build_knowledge_graph`方法中
+
+```python
+g = dgl_graph((s, d), num_nodes=num_nodes)
+```
+
+创建图的方法一直在报错，看信息应该是底层c和h库的问题，修改起来太麻烦，于是通过更换构建图的方式来规避这项错误。
+
+```python
+g = dgl.DGLGraph()
+g.add_nodes(num_nodes)
+g.add_edges(s, d)
+```
+
+在`rgcn/utils`中同样，`g = dgl.graph([])`方法创建空图会报底层错误，更换为另一种构建方法`g = dgl.DGLGraph()`
+
+最终成功让模型跑起来，但因为我笔记本显存只有2G，不出意外直接爆显存了。将改动代码和dgl库迁移到深度学习服务器中，用2080Ti跑，结果如下：
+
+```shell
+(pytorch) user-lqz@admin:~/workspace/FangHonglin/cuda_test/rgcn$ python link_predict.py -d FB15k-237 --gpu 0 --eval-protocol raw
+Using backend: pytorch
+Namespace(dataset='FB15k-237', dropout=0.2, edge_sampler='uniform', eval_batch_size=500, eval_protocol='raw', evaluate_every=500, gpu=0, grad_norm=1.0, graph_batch_size=30000, graph_split_size=0.5, lr=0.01, n_bases=100, n_epochs=6000, n_hidden=500, n_layers=2, negative_sample=10, regularization=0.01)
+# entities: 14541
+# relations: 237
+# training edges: 272115
+# validation edges: 17535
+# testing edges: 20466
+num_nodes: 14541, s_shape: (620232,), d_shape: (620232,)
+Done saving data into cached files.
+/home/user-lqz/anaconda3/envs/pytorch/lib/python3.7/site-packages/dgl/data/utils.py:285: UserWarning: Property dataset.train will be deprecated, please use g.edata['train_mask'] instead.
+  warnings.warn('Property {} will be deprecated, please use {} instead.'.format(old, new))
+/home/user-lqz/anaconda3/envs/pytorch/lib/python3.7/site-packages/dgl/data/utils.py:285: UserWarning: Property dataset.valid will be deprecated, please use g.edata['val_mask'] instead.
+  warnings.warn('Property {} will be deprecated, please use {} instead.'.format(old, new))
+/home/user-lqz/anaconda3/envs/pytorch/lib/python3.7/site-packages/dgl/data/utils.py:285: UserWarning: Property dataset.test will be deprecated, please use g.edata['test_mask'] instead.
+  warnings.warn('Property {} will be deprecated, please use {} instead.'.format(old, new))
+Test graph:
+/home/user-lqz/workspace/FangHonglin/cuda_test/rgcn/utils.py:128: RuntimeWarning: divide by zero encountered in true_divide
+  norm = 1.0 / in_deg
+# nodes: 14541, # edges: 544230
+start training...
+# sampled nodes: 11778
+# sampled edges: 30000
+# nodes: 11778, # edges: 30000
+Done edge sampling
+Epoch 0001 | Loss 2.4259 | Best MRR 0.0000 | Forward 1.6422s | Backward 0.4032s
+# sampled nodes: 11797
+# sampled edges: 30000
+# nodes: 11797, # edges: 30000
+Done edge sampling
+Epoch 0002 | Loss 3.3204 | Best MRR 0.0000 | Forward 0.0373s | Backward 0.0769s
+# sampled nodes: 11738
+# sampled edges: 30000
+# nodes: 11738, # edges: 30000
+Done edge sampling
+Epoch 0003 | Loss 17.1309 | Best MRR 0.0000 | Forward 0.0375s | Backward 0.0769s
+# sampled nodes: 11790
+# sampled edges: 30000
+# nodes: 11790, # edges: 30000
+Done edge sampling
+```
+
+可以发现，模型的MRR一直为0，模型并没有进行学习。推测可能和`RuntimeWarning: divide by zero encountered in true_divide`有关
+
+出错代码为：
+
+```python
+def comp_deg_norm(g):
+    g = g.local_var()
+    in_deg = g.in_degrees(range(g.number_of_nodes())).float().numpy()
+    norm = 1.0 / in_deg
+    norm[np.isinf(norm)] = 0
+    return norm
+```
+
+其中`g`为Graph，`in_degrees()`计算每个节点的入度，当节点入度为0，自然在norm计算时会报错，返回inf。但后面也将inf值修正为了0，因此这里报错是正常现象，MRR为0的原因还要找找。
+
+后来仔细查看代码后才发现，这里的MRR是best MRR的意思，代码中设置的是每500个epoch评估一次MRR，原因是评估MRR值是在CPU上进行的，如果每个epoch都进行评估，则需要很大的时间代价，因此每500次epoch进行一次评估。因此在前500个epoch里面，MRR显示的就是0。只需要多运行一会儿就好。
+
+```shell
+...
+Epoch 0999 | Loss 0.0860 | Best MRR 0.1392 | Forward 0.0540s | Backward 0.1129s
+# sampled nodes: 11762
+# sampled edges: 30000
+# nodes: 11762, # edges: 30000
+Done edge sampling
+Epoch 1000 | Loss 0.0874 | Best MRR 0.1392 | Forward 0.0556s | Backward 0.1079s
+start eval
+batch 0 / 41
+batch 1 / 41
+batch 2 / 41
+batch 3 / 41
+...
+Done edge sampling
+Epoch 6500 | Loss 0.0754 | Best MRR 0.1506 | Forward 0.0373s | Backward 0.0771s
+start eval
+batch 0 / 41
+...
+batch 40 / 41
+MRR (raw): 0.147854
+Hits (raw) @ 1: 0.078740
+Hits (raw) @ 3: 0.158385
+Hits (raw) @ 10: 0.281320
+training done
+Mean forward time: 0.051310s
+Mean Backward time: 0.100028s
+start testing:
+Using best epoch: 6000
+MRR (raw): 0.150629
+Hits (raw) @ 1: 0.085288
+Hits (raw) @ 3: 0.156259
+Hits (raw) @ 10: 0.280294
+```
+
+
+
+
+
