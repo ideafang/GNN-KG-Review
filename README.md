@@ -704,5 +704,5 @@ for cite_list in cites:
 
 ## GCN对边的学习效果
 
-见week2中的[README](./week2/README.md)
+见week2中的[README](./week2)
 

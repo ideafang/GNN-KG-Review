@@ -59,7 +59,7 @@ FreeBase是一个采用结构化数据的大型合作知识库，2014年被Googl
 
 #### 数据结构
 
-<img src="../../../../研一/GNN/GNN-KG-Review/picture/1566878268706-1d7b3ccc-992c-440d-b237-36720d0317e4.png" alt="image.png" style="zoom: 67%;" />
+<img src="picture/1566878268706-1d7b3ccc-992c-440d-b237-36720d0317e4.png" alt="image.png" style="zoom: 67%;" />
 
 - Topic：实例或实体，每一条信息叫做Topic。比如：姚明。
 - Type：类型或概念，每个Topic可以属于多个Type。比如：人、运动员。
