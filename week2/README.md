@@ -2,7 +2,7 @@
 
 Link Predict（关系预测）
 
-## 复现论文
+## 复现论文R-GCN
 
 复现论文：《[Modeling Relational Data with Graph Convolutional Networks](https://arxiv.org/abs/1703.06103)》
 
@@ -510,4 +510,16 @@ Hits (raw) @ 1: 0.085288
 Hits (raw) @ 3: 0.156259
 Hits (raw) @ 10: 0.280294
 ```
+
+## 复现论文SACN
+
+复现论文：
+
+**End-to-end Structure-Aware Convolutional Networks for Knowledge Base Completion.** AAAI 2019. [paper](https://arxiv.org/pdf/1811.04441.pdf)
+
+*Chao Shang, Yun Tang, Jing Huang, Jinbo Bi, Xiaodong He, Bowen Zhou.*
+
+官方复现代码：https://github.com/JD-AI-Research-Silicon-Valley/SACN
+
+数据集仍然是FB15k-237
 
